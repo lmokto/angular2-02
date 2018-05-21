@@ -36,7 +36,7 @@ export class HeroesService {
             mando en ese momento (el Hulk Banner es el más débil, pero lo compensa con su inteligencia).',
           img: 'assets/img/hulk.png',
           aparicion: '1962-05-01',
-          casa:'Marvel'
+          casa: 'Marvel'
         },
         {
           nombre: 'Linterna Verde',
@@ -75,11 +75,13 @@ export class HeroesService {
     constructor() {
         console.log('Servicio listo para usar!!');
     }
-    /**
-     * name
-     */
+
     getHeroes(): Heroe[] {
         return this.heroes;
+    }
+
+    getHeroe( idx: string) {
+        return this.heroes[idx];
     }
 
 }

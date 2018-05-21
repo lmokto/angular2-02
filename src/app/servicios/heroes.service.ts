@@ -5,6 +5,7 @@ import { BuiltinVar } from '@angular/compiler';
 export class HeroesService {
     private heroes: Heroe[] = [
         {
+          idx: '1',
           nombre: 'Aquaman',
           bio: 'El poder mas reconocido de Aquaman es la capacidad telepatica para comunicarse con la vida marina, \
           la cual puede convocar a grandes distancias.',
@@ -13,6 +14,7 @@ export class HeroesService {
           casa: 'DC'
         },
         {
+          idx: '2',
           nombre: 'Batman',
           bio: 'Los rasgos principales de Batman se resumen en «destreza física, habilidades deductivas y \
           obsesión». La mayor parte de las características básicas de los cómics han variado por las diferentes \
@@ -22,6 +24,7 @@ export class HeroesService {
           casa: 'DC'
         },
         {
+          idx: '3',
           nombre: 'Daredevil',
           bio: 'Al haber perdido la vista, los cuatro sentidos restantes de Daredevil fueron aumentados \
            por la radiación a niveles superhumanos, en el accidente que tuvo cuando era niño. A pesar \
@@ -31,6 +34,7 @@ export class HeroesService {
           casa: 'Marvel'
         },
         {
+          idx: '4',
           nombre: 'Hulk',
           bio: 'Su principal poder es su capacidad de aumentar su fuerza hasta niveles prácticamente \
            ilimitados a la vez que aumenta su furia. Dependiendo de qué personalidad de Hulk esté al \
@@ -40,6 +44,7 @@ export class HeroesService {
           casa: 'Marvel'
         },
         {
+          idx: '5',
           nombre: 'Linterna Verde',
           bio: 'Poseedor del anillo de poder que posee la capacidad de crear manifestaciones de luz \
           sólida mediante la utilización del pensamiento. Es alimentado por la Llama Verde (revisada \
@@ -51,6 +56,7 @@ export class HeroesService {
           casa: 'DC'
         },
         {
+          idx: '6',
           nombre: 'Spider-Man',
           bio: 'Tras ser mordido por una araña radiactiva, obtuvo los siguientes poderes sobrehumanos, \
           una gran fuerza, agilidad, poder trepar por paredes. La fuerza de Spider-Man le permite levantar \
@@ -62,6 +68,7 @@ export class HeroesService {
           casa: 'Marvel'
         },
         {
+          idx: '7',
           nombre: 'Wolverine',
           bio: 'En el universo ficticio de Marvel, Wolverine posee poderes regenerativos que pueden curar \
           cualquier herida, por mortal que ésta sea, además ese mismo poder hace que sea inmune a cualquier \
@@ -81,15 +88,20 @@ export class HeroesService {
         return this.heroes;
     }
 
-    getHeroe( idx: string) {
-        return this.heroes[idx];
+    getHeroe( idx ) {
+      for ( let i = 0; i < this.heroes.length; i++ ) {
+        if ( this.heroes[i].idx === idx ) {
+          return this.heroes[i];
+        }
+      }
     }
 
     buscarHeroes( termino: string ): Heroe[] {
       const heroesArr: Heroe[] = [];
       let nombre: string;
       termino = termino.toLocaleLowerCase();
-      for ( const heroe of this.heroes ) {
+      for ( let i = 0; i < this.heroes.length; i++ ) {
+        const heroe = this.heroes[i];
         nombre =  heroe.nombre.toLocaleLowerCase();
         if ( nombre.indexOf( termino ) >= 0 ) {
           heroesArr.push( heroe );
@@ -100,6 +112,7 @@ export class HeroesService {
 
 }
 export interface Heroe {
+    idx: string;
     nombre: string;
     bio: string;
     img: string;

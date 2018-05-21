@@ -23,12 +23,4 @@ export class FilterheroesComponent implements OnInit {
     });
   }
 
-  verHeroe( heroe: string ) {
-    this.heroes.forEach(( h, index ) => {
-      if ( h.nombre.toLowerCase() === heroe.toLowerCase() ) {
-        this.router.navigate( ['/heroe', index] );
-      }
-    });
-  }
-
 }

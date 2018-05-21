@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { BuiltinVar } from '@angular/compiler';
 
 @Injectable()
 export class HeroesService {
@@ -82,6 +83,19 @@ export class HeroesService {
 
     getHeroe( idx: string) {
         return this.heroes[idx];
+    }
+
+    buscarHeroes( termino: string ): Heroe[] {
+      const heroesArr: Heroe[] = [];
+      let nombre: string;
+      termino = termino.toLocaleLowerCase();
+      for ( const heroe of this.heroes ) {
+        nombre =  heroe.nombre.toLocaleLowerCase();
+        if ( nombre.indexOf( termino ) >= 0 ) {
+          heroesArr.push( heroe );
+        }
+      }
+      return heroesArr;
     }
 
 }
